@@ -11,30 +11,30 @@
 
 ## Basic information
 
-Name:
+Name: Skye Zheng
 
-CNetID:
+CNetID: jzheng2
 
-Section:
+Section: 2
 
-Mini-project title:
+Mini-project title: Mini-project-1: A Hello World Function
 
-Submission date:
+Submission date: 2025-1-24
 
-Project GitHub subdirectory URL:
+Project GitHub subdirectory URL: https://github.com/Skye1229/d2mr-assessment-jzheng2/tree/main/06_r-programming/01_hello-world
 
 URL or instructions to access additional materials, if needed:
 
 
 ## Additional information
 
-1. Did you complete the project with direct collaborators or general support? If so, who did you collaborate with and what was/were their contribution(s)?
+1. Did you complete the project with direct collaborators or general support? If so, who did you collaborate with and what was/were their contribution(s)? No.
     1. Direct collaborators (students who will be turning in a version of the same project) and their contributions:
     2. General support (students who helped you with debugging, conceptual understanding, or the like) and their contributions:
 2. Did you use LLMs or other AI models to generate text or code for this project? If so, which tools did you use and how did you use them? Remember in this class you *are* allowed (even encouraged) to use these tools for help with coding, but not for writing text. This can be very brief, just one or two sentences is fine unless you have more you'd like to add.
-    1. answer here 
+    1. I have used ChatGPT to help me with coding, such as I asked for the function that can transform the string into POSIXlt time format.
 3. For off-the-menu projects only, did you complete the project as proposed? If not, what changed?
-    1. answer here or n/a
+    1. n/a
 
 ## Assessed Objectives
 
@@ -159,7 +159,7 @@ Below each learning objective is a list of general expectations for meeting that
     2. Uses `stringr` functions in a data transformation pipeline
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [X] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -288,7 +288,7 @@ Below each learning objective is a list of general expectations for meeting that
     4.  Chunks are distributed throughout the manuscript, sensibly placed near the text they support
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [X] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments: 
         
@@ -300,7 +300,7 @@ Below each learning objective is a list of general expectations for meeting that
     4. Organizes setup chunks sensibly
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [X] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -337,7 +337,7 @@ Below each learning objective is a list of general expectations for meeting that
     1. Includes all necessary metadata, output options, and formatting options necessary to render an APA styled document (or other specified style if appropriate for the project)
 
         -   [ ] Objective attempt
-        -   [ ] Unique objective attempt
+        -   [X] Unique objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -425,7 +425,15 @@ You are not required to demonstrate these objectives in your independent project
 If you believe you have demonstrated any of the above skills sufficiently to count toward the 20 additional objectives-based points, please indicate which objective(s) you believe you have met and provide a brief explanation of how you have met each objective.
 
 <!-- Explanation of demonstrated unassessed objectives below this line -->
+I have demonstrated the unassessed objectives 1, 2, 10, and 12.
 
+- ***Objective 1*** I have used frequent and informative comments to explain my code and also added comments to describe each code chunk in Markdown.
+
+- ***Objective 2*** I have used the "?" to find documentation for some functions such as `?abs()` and `?sample()`.
+
+- ***Objective 10*** In my main `hello_world()` function, I call three other functions I wrote within it. Since these functions only aim to support the `hello_world()`, and including them in the code chunk might confuse people, so I decided to place them in a separate R. file and source it.
+
+- ***Objective 12*** I have used several data types in this mini-project, such as string/character(e.g., `time_of_day`), numeric(e.g., `time_left_num <- abs(as.numeric(time_left))`), integer(e.g., `hours_left <- as.integer((floor(time_left_num)))`), Boolean(i.e., `TRUE` and `FALSE`), and vectors (e.g., ` return(c(hours_left, minutes_left))`). I also have transformed one data type to another, such as transforming numeric to integer (`minutes_left = as.integer((time_left_num - hours_left)*60)`) and transforming string into POSIXlt(`time <- strptime(time, "%H:%M")`)
 
 <!-- Explanation of demonstrated unassessed objectives above this line -->
 
@@ -447,8 +455,10 @@ Thoughtful reflections may earn engagement points.
 
 
 <!-- Reflection below this line -->
-
-
+This was my first time using Quarto to write R code, which was very fascinating. I really like how quarto can combine both text and code together to render a project more interactively.
+I think writing informative comments was challenging, as I need to make sure others can understand my comments. It's easy to write comments that I can understand, but it takes practice and effort to write informative comments that are both clear to me and other readers.
+I learned a lot from this mini-project, including how to use Quarto, how to work with code chunks, how to source an R. file, how to add a YAML header, and how to write informative comments. 
+Next time, I want to keep improving my comments to make them even more concise and informative, and I also want to practice adding inline R variables into the text in Quarto.
 
 
 
