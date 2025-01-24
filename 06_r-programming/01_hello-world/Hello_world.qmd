@@ -1,0 +1,109 @@
+---
+title: "Mini-project-1: A Hello World Function"
+author: "Skye Zheng"
+Date: "January 24, 2025"
+fontsize: 12pt 
+mainfont: "Times New Roman"
+format: html
+---
+
+## Project description:
+
+In this mini-project, a hello_world function is designed to greet people based on the time of day. 
+
+## Code:
+Install two packages first.
+
+```{r,echo = TRUE, output = FALSE, warning=FALSE, message=FALSE}
+#install.packages("stringr")
+#install.packages("dplyr")
+
+library(stringr)
+library(dplyr)
+```
+
+Below is the main function of the hello_world. You can provide your name and the time of day to receive a greeting. Also, you can specify whether it is midnight right now, in which you will receive a surprise response. Optionally, you can choose to know how much time is left before your bedtime.
+
+Inside the main function, there are three sub-functions: check_time, greeting_words, and time_left_for_bed. They are in a separate R script file.
+
+```{r, hello_world_function, echo = TRUE, output = FALSE, warning=FALSE, message=FALSE}
+
+# Inside Functions.R, there are three functions:
+# check_time: categorizing the time into morning, afternoon, evening, and night.
+# greeting_words: return greeting words based on the time of day.
+# time_left_for_bed: tell people how much time is left until bedtime
+source("Functions.R") 
+
+# build a hello_world function: greeting each person 
+hello_world <-function(name_list, time_of_day, is_midnight = FALSE, know_time_left = FALSE, bed_time = "22:00"){
+  
+  # name_list - a list of names
+  # time_of_day - the time of day in string format "xx:xx"
+  # is_midnight - a Boolean value to check if it is midnight
+  # know_time_left - whether choose to know how much time left before bedtime
+  # bed_time - the time to go to bed; bedtime can be customized if know_time_left == TRUE, default is "22:00".
+  
+  # Loop through each name in the name_list
+  for (name in name_list){
+    
+    # Clean the name to standard format: capitalizing the first letter of each word and remove white spaces in the beginning and at the end
+    name <- name %>%
+      str_to_title() %>%
+      str_trim()
+    
+    # 1. say hello to each name in the name_list
+    print(paste("Hello", name, ">(^~^)<"))
+    
+    # 2. If they consider it is midnight currently, no further greetings, print "GO TO SLEEP RIGHT NOW!!!"
+    if (is_midnight == TRUE){
+      print(paste0("GO TO SLEEP RIGHT NOW!!! ", str_to_upper(name),"!"))
+      next
+    }
+    
+    # 3. If it is not midnight, print greeting words based on the time of day
+    
+    # Call check_time function to categorize the time into time period: morning/afternoon/evening/night
+    time_period <- check_time(time_of_day) 
+    
+    # Call greeting_words function to randomly return greeting words based on the time period
+    words <- greeting_words(time_period) 
+    
+    # Print Good morning/afternoon/evening/night and additional greeting words to the person!
+    print(paste0("Good ", time_period,"! ", words))
+    
+    # 4. If know_time_left is TRUE, provide the time left before bedtime according to bed_time. 
+    # Call time_left_for_bed function to get how many hours and minutes left before bedtime
+    time_left <- time_left_for_bed(time_of_day, bed_time)
+    if(know_time_left == TRUE){
+      print(paste("You have", time_left[1], "hours and", time_left[2], "minutes left until bedtime."))
+    } 
+  }
+}
+
+```
+
+## Now, it's time to test our functions!
+
+**1. A person named Skye would like to know how much time is left until bedtime.**
+```{r, test_1}
+hello_world("Skye", "11:24", FALSE, TRUE)
+```
+**2. Greeting 3 people! They would also like to know how much time is left until bedtime.**
+```{r, test_2}
+hello_world(c("Skye","Jie","Feng"), "15:04", FALSE, TRUE, "23:00")
+```
+
+**3. Greeting Skye again! But this time, she does not want to know how much time is left until her bedtime ~**
+```{r, test_3}
+hello_world("skye", "21:50", FALSE)
+```
+**4. Greeting Skye and Christy! It is midnight!!**
+```{r, test_4}
+hello_world(c("Skye","Christy"), "23:34", TRUE)
+```
+**5. Greeting Skye and Christy again! Oops, they have white spaces in their names, but our `hello_world()` function removes those white spaces.**
+```{r, test_5}
+hello_world(c("  Skye  "," christy "), "23:34", TRUE)
+```
+## Thank you!
+
