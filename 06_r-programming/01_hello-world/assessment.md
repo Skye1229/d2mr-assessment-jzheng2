@@ -106,9 +106,9 @@ Below each learning objective is a list of general expectations for meeting that
 
         -   [ ] Objective attempt
         -   [X] Unique objective attempt
-        -   [ ] Objective met
-        -   Grader comments: You would want to use all three types of operators, namely arithmetic, comparison, and logical operators.
-
+        -   [X] Objective met
+        -   Grader comments: 
+        
 7.  Parse and define functions and arguments
 
     1. Defines at least one function with at least one argument
