@@ -96,7 +96,7 @@ Below each learning objective is a list of general expectations for meeting that
 
         -   [ ] Objective attempt
         -   [X] Unique objective attempt
-        -   [ ] Objective met
+        -   [X] Objective met
         -   Grader comments:
 
 6.  Use arithmetic, comparison, and logical operators
@@ -107,7 +107,7 @@ Below each learning objective is a list of general expectations for meeting that
         -   [ ] Objective attempt
         -   [X] Unique objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: You would want to use all three types of operators, namely arithmetic, comparison, and logical operators.
 
 7.  Parse and define functions and arguments
 
@@ -117,7 +117,7 @@ Below each learning objective is a list of general expectations for meeting that
 
         -   [ ] Objective attempt
         -   [x] Unique objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
 
 8.  Parse and write conditional statements and/or loops
@@ -127,7 +127,7 @@ Below each learning objective is a list of general expectations for meeting that
 
         -   [ ] Objective attempt
         -   [x] Unique objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
 
 ### Tidyverse
@@ -160,7 +160,7 @@ Below each learning objective is a list of general expectations for meeting that
 
         -   [ ] Objective attempt
         -   [X] Unique objective attempt
-        -   [ ] Objective met
+        -   [X] Objective met
         -   Grader comments:
 
 12. Use `forcats` functions to work with factor variables
@@ -289,7 +289,7 @@ Below each learning objective is a list of general expectations for meeting that
 
         -   [ ] Objective attempt
         -   [X] Unique objective attempt
-        -   [ ] Objective met
+        -   [X] Objective met
         -   Grader comments: 
         
 23. Use code chunks to set up a quarto document
@@ -301,7 +301,7 @@ Below each learning objective is a list of general expectations for meeting that
 
         -   [ ] Objective attempt
         -   [X] Unique objective attempt
-        -   [ ] Objective met
+        -   [X] Objective met
         -   Grader comments:
 
 24. Render publication-quality tables, figures, and images from code chunks
@@ -339,7 +339,7 @@ Below each learning objective is a list of general expectations for meeting that
         -   [ ] Objective attempt
         -   [X] Unique objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: You did include some YAML options, but they aren't what we really need/expect for maintaining an R or quarto notebook intended for any kind of (informal) publishing.
 
 27. Use quarto R Markdown to compose an academic manuscript
 
