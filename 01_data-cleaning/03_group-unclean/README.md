@@ -1,5 +1,7 @@
 # Mini-project: Data cleaning | Group “uncleaning”
 
+*Note: Some projects that center on dataset manipulation share similarity in structure. There is considerable overlap in the instructions across some mini-projects, but there are also important differences. Please read carefully.*
+
 Primary skills/categories targeted:
 
 - Assessed: 5, 6, 8, 9, 10, 11, 12

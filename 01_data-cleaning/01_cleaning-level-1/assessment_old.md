@@ -1,3 +1,18 @@
+
+
+# !!IMPORTANT UPDATE!!
+
+This is an old version of the assessment file that was pushed to this subdirectory in error.
+
+Please use the new version, which is available in the `assessment.md` file in the top-level directory of your repository. 
+
+Ordinarily I would delete this file to avoid confusion, but I'm leaving it here because I know many people have already started work and even submitted this. I am renaming it to `assessment_old.md` to avoid confusion, though I realize that is likely to cause more confusion than it alleviates. 
+
+*If you have submitted this assignment using this file, you may be asked to resubmit using the updated file. 
+
+I apologize for this confusion!!
+
+
 # Cleaning Level 1 Assigment Assessment
 
 **Do not duplicate this file.** Make your edits directly in the markdown and use version control to update with each attempt.
