@@ -689,3 +689,62 @@ my_factor3
 fct_count(my_factor)
 
 
+## Advanced factor manipulation
+
+# Start off with more basics
+
+# Create a basic factor
+fruits <- factor(c("apple", "banana", "apple", "cherry", "banana", "banana"))
+print(fruits)
+
+# Check and modify levels
+levels(fruits)  # View current levels
+levels(fruits) <- c("APPLE", "BANANA", "CHERRY")  # Change level names, matched on order
+levels(fruits)  # Verify changes
+levels(fruits) <- c("apple", "banana", "cherry")  # Change them back
+
+# Create factor with specified ordered levels
+fruits_ordered <- factor(
+    c("apple", "banana", "apple", "cherry", "banana"),
+    levels = c("cherry", "banana", "apple"),
+    ordered = TRUE
+)
+print(fruits_ordered) # check levels, notice the new ordering "<"
+
+# Even for unordered factors, you need to pay attention to the order of the levels in order to manipulate them correctly! They just won't be treated as ordered categorical variables
+
+# Move to more advanced
+
+# Using fct_relevel
+fruits2 <- fct_relevel(fruits, "cherry", "apple")  # Move specific levels
+# Same with base R
+fruits2_base <- factor(fruits, levels = c("cherry", "apple", "banana"))
+
+# Using fct_reorder to reorder by another variable
+bags_sold <- c(5, 2, 7, 1, 3, 6)
+# fct_reorder will match each element of fruits with the corresponding element of bags_sold
+# The .fun argument specifies the function to use for reordering
+# Resulting in the levels of fruits being reordered based on the mean of bags_sold, least to greatest (cherries = 1, bananas = 2.5, apples = 6)
+fruits3 <- fct_reorder(fruits, bags_sold, .fun = mean)  # Order by mean of values
+fruits3
+# Base R equivalent requires more steps
+means <- tapply(bags_sold, fruits, mean)
+fruits3_base <- factor(fruits, levels = names(sort(means)))
+
+# Order by frequency
+fruits4 <- fct_infreq(fruits)  # Most frequent first
+# Base R equivalent
+freq_table <- sort(table(fruits), decreasing = TRUE)
+fruits4_base <- factor(fruits, levels = names(freq_table))
+
+# Reverse level order
+fruits5 <- fct_rev(fruits)
+# Reverses the actual functional order of ordered levels as well
+print(fruits_ordered)
+fruits_ordered_rev <- fct_rev(fruits_ordered)
+print(fruits_ordered_rev) # check levels, notice the new ordering
+# Base R equivalent
+fruits5_base <- factor(fruits, levels = rev(levels(fruits)))
+
+
+
