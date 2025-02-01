@@ -51,7 +51,10 @@ Start by saving the `gapminder` dataset to a new tbl called `gm.wrangled`. You w
 #| label: load-starting-data
 
 # create gm.wrangled
+gm.wrangled <- gapminder
 
+# view dataset
+gm.wrangled
 
 ```
 
@@ -62,7 +65,10 @@ Before you start making changes to the `gm.wrangled` dataset, identify the diffe
 #| label: compare-datasets
 
 # Compare datasets using all.equal(), diff_data(), or another method of your choice
-
+diff.1 <- all.equal(gm.wrangled.goal, gm.wrangled)
+diff.2 <- diff_data(gm.wrangled.goal, gm.wrangled)
+diff.1
+diff.2
 
 ```
 
@@ -122,6 +128,13 @@ The chunk(s) in this category may include things like selecting and renaming col
 #| label: initial-manipulation
 
 # Data Selection and Initial Manipulation
+gm.wrangled <- gm.wrangled %>%
+  rename(life_expectancy = lifeExp, population = pop, gdp_per_capita = gdpPercap) %>% # change variable names
+  filter(year >= 1992)                               # filter out rows with year < 1992
+
+
+print(gm.wrangled)
+
 
 ```
 
@@ -135,6 +148,19 @@ The chunk(s) in this category may include things like releveling factor variable
 #| label: factor-manipulation
 
 # Factor Manipulation
+
+# arrange order for continent
+gm.wrangled <- gm.wrangled %>%
+  mutate(continent = recode(continent, "Asia" = "Asian", 
+                            "Europe" = "European", 
+                            "Africa" = "African")) %>% # change each continent name
+  mutate(continent = paste0(continent, " Region"))     # add "region" after each continent name
+
+gm.wrangled$continent <- factor(gm.wrangled$continent, 
+                                levels = c("Asian Region", "European Region", "African Region",
+                                           "Americas Region"), 
+                                ordered = TRUE)
+
 
   
 ```
@@ -151,7 +177,6 @@ The chunk(s) in this category may include things like text manipulation, creatin
 # String and Numeric Transformations
 
 
-
 ```
 
 ## Complex Column Operations
@@ -164,6 +189,43 @@ The chunk(s) in this category may include things like generating new columns bas
 
 # Complex Column Operations
 
+# Create a new column: country_abbrev (Basedo n country)
+gm.wrangled$country_abbrev <- gm.wrangled$country %>%
+  str_sub(1, 3) %>%
+  str_to_upper()
+
+gm.wrangled$population_millions <- round(gm.wrangled$population/100000,2)
+gm.wrangled <- gm.wrangled %>%
+  mutate(
+    # Create a new column: population_millions (Based on population)
+    population_millions = paste0(population_millions, " mil."),
+    
+    # Create a new column: development_status (Based on gdp_per_capita)
+    development_status = case_when( 
+    gdp_per_capita <= 5000 ~ "Low Income",
+    gdp_per_capita <= 20000 & gdp_per_capita > 5000  ~ "Middle Income",
+    gdp_per_capita > 20000 ~ "High Income"),
+    
+    # Create a new column country_length (based on country length)
+    country_length = nchar(as.character(country)),
+    
+    # Create a new column economic_score
+    economic_score = (gdp_per_capita*life_expectancy)/10) %>%
+  
+  # Create a new column continent_avg_life_exp (average life_exp group by continent and development_status)
+  group_by(continent, development_status) %>% 
+  mutate(continent_avg_life_exp = mean(life_expectancy)) %>%
+  ungroup() %>%
+  
+  # Create a new column relative_life_expectancy (life_exp / continent_avg_life_exp)
+  mutate(relative_life_expectancy = life_expectancy/continent_avg_life_exp) 
+  
+# Create a new column population_rank_in_continent (group by continent and rank by population)
+gm.wrangled <- gm.wrangled %>%
+  group_by(continent) %>%
+  mutate(population_rank_in_c = min_rank(desc(population)))
+
+print(gm.wrangled)
 ```
 
 ## Final Touches
@@ -175,6 +237,10 @@ The chunk(s) in this category may include things like final column reordering, s
 #| label: final-touches
 
 # Final Touches
+# order the rows based on continent, year, life_expectancy (from large to small)
+gm.wrangled <- gm.wrangled %>%
+  arrange(continent, year, desc(life_expectancy))
+print(gm.wrangled)
 
 ```
 
