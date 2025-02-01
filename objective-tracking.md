@@ -15,16 +15,16 @@ This document tracks your progress meeting 20 unique objectives across all mini-
 
 ## R programming
 
-5.  [ ] Find, install, require, and load R packages
-6.  [ ] Use arithmetic, comparison, and logical operators
-7.  [ ] Parse and define functions and arguments
-8.  [ ] Parse and write conditional statements and/or loops
+5.  [X] Find, install, require, and load R packages
+6.  [X] Use arithmetic, comparison, and logical operators
+7.  [X] Parse and define functions and arguments
+8.  [X] Parse and write conditional statements and/or loops
 
 ## Tidyverse
 
 9.  [ ] Use `readr` functions to read in and write out data
 10. [ ] Use `dplyr` and `tidyr` functions to transform data
-11. [ ] Use `stringr` functions to work with string variables
+11. [X] Use `stringr` functions to work with string variables
 12. [ ] Use `forcats` functions to work with factor variables
 
 ## Data visualization with ggplot2
@@ -47,8 +47,8 @@ This document tracks your progress meeting 20 unique objectives across all mini-
 
 ## Notebooks and code chunks
 
-22. [ ] Create and effectively use code chunks following best practices
-23. [ ] Use code chunks to set up a quarto document
+22. [X] Create and effectively use code chunks following best practices
+23. [X] Use code chunks to set up a quarto document
 24. [ ] Render publication-quality tables, figures, and images from code chunks
 25. [ ] Execute descriptive analyses and/or hypothesis testing in code chunks
 
