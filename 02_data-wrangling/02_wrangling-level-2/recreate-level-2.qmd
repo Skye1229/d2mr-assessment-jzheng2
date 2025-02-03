@@ -222,8 +222,8 @@ gm.wrangled <- gm.wrangled %>%
   
 # Create a new column population_rank_in_continent (group by continent and rank by population)
 gm.wrangled <- gm.wrangled %>%
-  group_by(continent) %>%
-  mutate(population_rank_in_c = min_rank(desc(population)))
+  group_by(continent, year) %>%
+  mutate(population_rank_in_continent = rank(desc(population)))
 
 print(gm.wrangled)
 ```
